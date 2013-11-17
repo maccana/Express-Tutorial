@@ -45,7 +45,11 @@ app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res){
 	}
 	res.send(message);
 });
-
+// POST function - can be testing using Chrome extension Advanced REST client & http://localhost:7000/users
+app.post("/users", function(req, res){
+	res.send("Creating a new user with the name " + req.body.username + ".\n" +
+		"Email: " + req.body.email + ".");
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
