@@ -32,6 +32,21 @@ app.get("/Welcome", function(req, res){
 	res.send(message);
 });
 
+// REST-ful test routes for user viewing / editing
+app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res){
+	// /users/10
+	// /users/10/
+	// /users/10/edit
+	var message = "user #" + req.params[0] + "'s profile";
+	if (req.params[1] === 'edit') {
+		message = "Editing " + message;
+	} else {
+		message = "Viewing " + message;
+	}
+	res.send(message);
+});
+
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
