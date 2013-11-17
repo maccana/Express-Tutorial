@@ -31,6 +31,9 @@ app.get("/Welcome", function(req, res){
 	].join("\n");
 	res.send(message);
 });
+app.get("/home", function(req,res){
+	res.render("home.jade");
+});
 
 // REST-ful test routes for user viewing / editing
 app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res){
