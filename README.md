@@ -1,1 +1,1 @@
-First app using Express / node for server side and jade templating fir views.
+First app using Express / node for server side and jade templating for views.
