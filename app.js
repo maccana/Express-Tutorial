@@ -32,9 +32,10 @@ app.get("/Welcome", function(req, res){
 	res.send(message);
 });
 app.get("/home", function(req,res){
-	res.render("home.jade");
+	res.render("home.jade", { title: "Buidling web apps with Express.js", 
+							  text: "Express is a great Javascript development framework. This template was created using Jade templating.",
+							});
 });
-
 // REST-ful test routes for user viewing / editing
 app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res){
 	// /users/10
