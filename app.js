@@ -5,12 +5,19 @@
 
 var express = require('express'), 
     http = require('http'),
-    app = express();
+    app = express(),
+    passport = require('passport'),
+    passportLocal = require('passport-local'),
+    jade = require('jade');
+    
+app.use(passport.initialize());
+app.use(passport.session());    
 
 // all environments
 app.configure(function() {
   app.set('port', process.env.PORT || 7000);
   app.use(express.bodyParser());
+  app.set('view engine', jade);
 });
 
 // RESTful routes
@@ -51,6 +58,14 @@ var message = "user #" + req.params[0] + "'s profile";
     message = "Viewing " + message;
   }
   res.send(message);
+});
+app.get('/login', function(req, res) {
+  res.render('login.jade');
+});
+
+// post for login
+app.post('/login', function(req, res) {
+  
 });
 
 // POST function - can be tested using Chrome extension Advanced REST client & http://localhost:7000/users
