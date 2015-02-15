@@ -1,1 +1,5 @@
-First app using Express / node for server side and jade templating for views.
+Express foundation application
+
+TODO:
+1. Configure mongodb
+2. Login / Register / Logout with passport
