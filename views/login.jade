@@ -1,2 +1,10 @@
 h2 views/login.jade 
-p Insert login form here...
+form(method="POST", action="/login")
+  input(type="hidden", name="_method", value="PUT")
+  p Username
+    input(type="text", name='username', username="username")
+  p Password
+    input(type="text", name='password', password="password")
+  p
+    input(type="submit")
+    
