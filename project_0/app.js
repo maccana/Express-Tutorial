@@ -8,7 +8,8 @@ var express = require('express'),
     app = express(),
     passport = require('passport'),
     passportLocal = require('passport-local'),
-    jade = require('jade');
+    jade = require('jade'),
+    _ = require("underscore");
     
 app.use(passport.initialize());
 app.use(passport.session());    
@@ -72,6 +73,17 @@ app.post('/login', function(req, res) {
 app.post("/users", function(req, res){
   res.send("Creating a new user with the name " + req.body.username + ".\n" +
     "Email: " + req.body.email + ".");
+});
+
+// underscore tests
+app.get('/underscore', function(req, res) {
+  var scores = [84, 99, 91, 65, 87, 55, 72, 68, 95, 42], 
+  topScorers = [], scoreLimit = 90;
+  // use _ to select only scores > 90
+  topScorers = _.select(scores, function(score){ return score > scoreLimit;});
+  console.log(topScorers);
+  // pass the topScorers var to the view
+  res.render('underscore.jade', { title: "Underscore Test", results: topScorers });
 });
 
 http.createServer(app).listen(app.get('port'), function(){
