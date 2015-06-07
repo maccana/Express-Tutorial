@@ -1,1 +1,1 @@
-An directory to hold example apps from Practical Node.js book
+Folder to store various example apps from Practical Node.js book
