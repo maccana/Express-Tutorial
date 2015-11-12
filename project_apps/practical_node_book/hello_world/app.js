@@ -9,8 +9,11 @@ var app = express();
 app.set('appName', 'hello-world');
 app.set('port', process.env.PORT || 3004);
 
+app.use(express.static(__dirname + '/public'));
+
 // Manually congfig cookie parser
 app.use(cookieParser());
+app.use(express.static('public'));
 
 // Set directory where views will live and use Jade engine
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +28,13 @@ app.get('/name/:name', function(req, res){
 // Note: Cookie is cleared from response but still available from request object
 app.get('/name', function(req, res){
 	res.clearCookie('name').send(req.cookies.name);
+});
+
+// Test image route
+app.get('/frst', function(req, res){
+	res.send('<img src="/test-image.jpg">')
+	// Send image in response by passing image name in url
+	// res.send('<img src="/' + req.params.img + '">')
 });
 
 // All non-specific routes will render index page and pass message to it
