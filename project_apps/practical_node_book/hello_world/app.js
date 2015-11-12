@@ -9,6 +9,7 @@ var app = express();
 app.set('appName', 'hello-world');
 app.set('port', process.env.PORT || 3004);
 
+// Set public directory for serving static assets
 app.use(express.static(__dirname + '/public'));
 
 // Manually congfig cookie parser
@@ -30,7 +31,7 @@ app.get('/name', function(req, res){
 	res.clearCookie('name').send(req.cookies.name);
 });
 
-// Test image route
+// Test image route example sending and image file from static public directory
 app.get('/frst', function(req, res){
 	res.send('<img src="/test-image.jpg">')
 	// Send image in response by passing image name in url
