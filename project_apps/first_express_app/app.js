@@ -5,21 +5,32 @@
 
 var express = require('express'), 
     http = require('http'),
-    app = express(),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
     passport = require('passport'),
-    passportLocal = require('passport-local'),
+    passportLocal = require('passport-local').Strategy,
     jade = require('jade'),
     _ = require("underscore");
-    
+
+var app = express();
+       
+// Passport    
 app.use(passport.initialize());
 app.use(passport.session());    
 
-// all environments
-app.configure(function() {
+// all environments - used in express 4
+var env = process.env.NODE_ENV || 'development';
+if ('development' == env) {
   app.set('port', process.env.PORT || 7000);
-  app.use(express.bodyParser());
   app.set('view engine', jade);
-});
+}
+
+// all environments - used in express 3.x
+// app.configure(function() {
+//   app.set('port', process.env.PORT || 7000);
+//   app.use(express.bodyParser());
+//   app.set('view engine', jade);
+// });
 
 // RESTful routes
 app.get("/", function(req, res){
@@ -66,7 +77,7 @@ app.get('/login', function(req, res) {
 
 // post for login
 app.post('/login', function(req, res) {
-  
+  // handle login authentication here 
 });
 
 // POST function - can be tested using Chrome extension Advanced REST client & http://localhost:7000/users
