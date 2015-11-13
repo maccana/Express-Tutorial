@@ -73,7 +73,7 @@ app.post('/login', function(req, res) {
 
 // Default express route
 app.get("/", function(req, res){
-	res.send("Hello, Express!");
+  res.send("Hello, Express!");
 });
 
 // Send array of HTML to browser
