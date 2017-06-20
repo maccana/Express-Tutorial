@@ -12,6 +12,8 @@ var realPerson = {
 rl.question("What is the name of a real person? ", function(answer) {
 
 	realPerson.name = answer;
+    
+    fs.writeFileSync(realPerson.name + ".md", `${realPerson.name}\n===============================\n\n`);
 
 	rl.setPrompt(`What would ${realPerson.name} say? `);
 
@@ -20,6 +22,8 @@ rl.question("What is the name of a real person? ", function(answer) {
 	rl.on('line', function(saying) {
 
 		realPerson.sayings.push(saying.trim());
+
+        fs.appendFile(realPerson.name + ".md", `* ${saying.trim()} \n`);
 
 		if (saying.toLowerCase().trim() === 'exit') {
 			rl.close();
