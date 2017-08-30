@@ -20,6 +20,10 @@ app.get("/btcprice", function(req, res){
   res.send("Bitcoin to the moon: " + btcoinPrice);
 });
 
+app.get("/block", function(req, res){
+  res.send("Current Block height: " + btcBlocks);
+});
+
 app.listen(8001, function(){
   console.log("Bitcoin to the moon listening on port 8001....");
 });
