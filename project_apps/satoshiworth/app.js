@@ -13,6 +13,10 @@ request({
 );
 
 app.get("/", function(req, res){
+  res.sendfile('index.html');
+});
+
+app.get("/btcprice", function(req, res){
   res.send("Bitcoin to the moon: " + btcoinPrice);
 });
 
