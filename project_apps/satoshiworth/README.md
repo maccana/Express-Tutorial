@@ -1,4 +1,4 @@
-Bitcoin to the moon price converter.
+Bitcoin to the Moon Price Converter
 ====================================
  
 
