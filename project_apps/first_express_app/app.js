@@ -107,7 +107,7 @@ var message = "user #" + req.params[0] + "'s profile";
 });
 
 // POST function - can be tested using Chrome extension Advanced REST client & http://localhost:7000/users
-app.post("/users", function(req, res){
+app.get("/users", function(req, res){
   res.send("Creating a new user with the name " + req.body.username + ".\n" +
     "Email: " + req.body.email + ".");
 });
