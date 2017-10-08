@@ -106,8 +106,16 @@ var message = "user #" + req.params[0] + "'s profile";
   res.send(message);
 });
 
+// Register
+app.get('/register', function(req,res) {
+  res.render('register.jade');
+});
+
 // POST function - can be tested using Chrome extension Advanced REST client & http://localhost:7000/users
 app.post("/users", function(req, res){
+  console.log('You will see me after submitting a post request from Postman....');
+
+  console.log('New Account for -> ' + req.body.email);
   res.send("Creating a new user with the name " + req.body.username + ".\n" +
     "Email: " + req.body.email + ".");
 });
